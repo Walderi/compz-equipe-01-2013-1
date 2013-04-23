@@ -8,7 +8,7 @@
 
 //Método para imprimir cada partição p do conjunto de n elementos.
 void imprimeParticoes( int *p, int n );
-//Método que valida se ainda existe alguma partição válida para imprimir.
+//Método que valida se ainda existe alguma partição válida para ser impressa.
 int existeParticaoValida( int *p, int *m, int n );
 
 #endif /* PARTICOES_H_ */
