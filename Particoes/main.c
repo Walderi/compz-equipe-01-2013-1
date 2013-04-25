@@ -14,12 +14,12 @@ int main(int argc, char *argv[]) {
 		p[i] = 1;
 	}
 
-	imprimeParticoes( p, n, cont );
+	imprime_particoes( p, n, cont );
 	++cont;
 
 	//Procura nova partição válida e, caso tenha, imprime.
-	while ( existeParticaoValida( p, n ) ) {
-		imprimeParticoes( p, n, cont );
+	while ( existe_particao_valida( p, n ) ) {
+		imprime_particoes( p, n, cont );
 		++cont;
 	}
 

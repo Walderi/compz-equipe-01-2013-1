@@ -7,7 +7,7 @@
 #include <stdio.h>
 
 //Método para imprimir cada partição p do conjunto de n elementos.
-void imprimeParticoes( int *p, int n, int cont ) {
+void imprime_particoes( int *p, int n, int cont ) {
 	//Verifica o número de conjuntos na partição
     int numConjuntos = 1;
     int i;
@@ -32,7 +32,7 @@ void imprimeParticoes( int *p, int n, int cont ) {
 }
 
 //Método que valida se ainda existe alguma partição válida para imprimir.
-int existeParticaoValida(int *p, int n) {
+int existe_particao_valida(int *p, int n) {
 	//Volta para o primeiro elemento para fazer as comparações
 	int i = 0;
 	++p[i];
