@@ -11,7 +11,7 @@
 // Verificar lógica, VERIFICAR todos os índices para evitar estouro do tamanho dos vetores e
 // verificar se os limites estão corretos.
 // Verificar se os tokens de finalização de string estão corretos e testar com emails falsos e
-// verdadeiros.
+// verdadeiros. ;)
 //-------------------------------------------------------------------------------------------------
 
 
