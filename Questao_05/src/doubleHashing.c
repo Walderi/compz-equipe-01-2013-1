@@ -13,6 +13,11 @@ unsigned int hashMatrix[matrixSize];
 
 void setHashMatrixNull()
 {
+	int i = matrixSize;
+	for(i = 0; i<matrixSize; i++)
+	{
+		hashMatrix[i] = NULL;
+	}
 }
 
 unsigned int hashing(int Key)
@@ -45,10 +50,10 @@ void main()
 //        hashMatrix[i] = NULL;
 //    }
 
-//    if (hashMatrix[1] == NULL)
-//    {
-//    printf(" NULL ");
-//    }else{ printf(" Bug ");}	
+    if (hashMatrix[1] == NULL)
+    {
+    printf(" NULL ");
+    }else{ printf(" Bug ");}
 
 }
 
