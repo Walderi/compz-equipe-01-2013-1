@@ -1,7 +1,8 @@
 #include <stdio.h>
+#include<stdlib.h>
 #include <string.h>
 
-#include "lista_email.c"
+#include "lista_email.h"
 
 #define MAX_TAM_STR 80
 
@@ -10,7 +11,7 @@ Questão 2 - Validador de emails. Lê lista com emails via parâmetros e gera sa
 Utilizar autômatos para executar verificação.
 */
 
-void main() {
+int main(void) {
 	//Variáveis de instância
 	char email[MAX_TAM_STR];
 
