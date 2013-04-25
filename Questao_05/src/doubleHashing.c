@@ -6,10 +6,16 @@
 */
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+//#include <conio.h>
 
-#define matrixSize 13
+#define matrixSize 100003
+#define randomNumberRoofTop 1000000
+#define bufferSize 100000
 
 unsigned int hashMatrix[matrixSize];
+int * randomNumbersBuffer = NULL;
 
 void setHashMatrixNull()
 {
@@ -20,8 +26,20 @@ void setHashMatrixNull()
 	}
 }
 
+void generateRandomNumbers()
+{
+	unsigned int i;
+	srand(time(NULL));
+	randomNumbersBuffer = (int *) malloc(bufferSize * sizeof(int));
+	for(i=0; i<randomNumberRoofTop; i++)
+	{
+		randomNumbersBuffer[i] = rand() % randomNumberRoofTop;
+	}
+}
+
 unsigned int hashing(int Key)
 {
+
 }
 
 unsigned int hashing2(int Key)
@@ -40,20 +58,10 @@ void printValue()
 {
 } 
 
-void main() 
+int main()
 {
-    printf("Hello World");
-
-//    int i = 0;
-//    for(i = 0; i<13; i++)
-//    {
-//        hashMatrix[i] = NULL;
-//    }
-
-    if (hashMatrix[1] == NULL)
-    {
-    printf(" NULL ");
-    }else{ printf(" Bug ");}
+	free(randomNumbersBuffer);
+	return 0;
 
 }
 
