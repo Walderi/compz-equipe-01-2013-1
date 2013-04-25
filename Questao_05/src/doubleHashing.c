@@ -13,6 +13,7 @@
 #define matrixSize 100003
 #define randomNumberRoofTop 1000000
 #define bufferSize 100000
+#define hashing2Constant 99991
 
 unsigned int hashMatrix[matrixSize];
 int * randomNumbersBuffer = NULL;
@@ -39,11 +40,12 @@ void generateRandomNumbers()
 
 unsigned int hashing(int Key)
 {
-
+	return (Key % matrixSize);
 }
 
 unsigned int hashing2(int Key)
 {
+	return ( hashing2Constant - (Key % hashing2Constant));
 } 
 
 void insertValue()
@@ -60,6 +62,8 @@ void printValue()
 
 int main()
 {
+
+
 	free(randomNumbersBuffer);
 	return 0;
 
