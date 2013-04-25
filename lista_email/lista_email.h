@@ -2,4 +2,4 @@
 #include<stdlib.h>
 #include <string.h>
 
-int verifica_email(char[] *enderecoEmail);
+int verifica_email(char *enderecoEmail);
