@@ -8,15 +8,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-//#include <conio.h>
 
-#define matrixSize 100003
-#define randomNumberRoofTop 1000000
-#define bufferSize 100000
-#define hashing2Constant 99991
+//#define matrixSize 100003
+#define matrixSize 17
+#define randomNumberRoofTop 100
+#define bufferSize 17
+//#define hashing2Constant 99991
+#define hashing2Constant 13
 
 unsigned int hashMatrix[matrixSize];
-int * randomNumbersBuffer = NULL;
+unsigned int randomNumbersBuffer[bufferSize];
 
 void setHashMatrixNull()
 {
@@ -31,7 +32,6 @@ void generateRandomNumbers()
 {
 	unsigned int i;
 	srand(time(NULL));
-	randomNumbersBuffer = (int *) malloc(bufferSize * sizeof(int));
 	for(i=0; i<randomNumberRoofTop; i++)
 	{
 		randomNumbersBuffer[i] = rand() % randomNumberRoofTop;
@@ -48,24 +48,51 @@ unsigned int hashing2(int Key)
 	return ( hashing2Constant - (Key % hashing2Constant));
 } 
 
-void insertValue()
+void insertValue(unsigned int value)
 {
+	unsigned int position = hashing(value);
+	unsigned int nextPosition = hashing2(value);
+	if (hashMatrix[position] == NULL)
+	{
+		hashMatrix[position] = value;
+	}
+	else
+	{
+		while(hashMatrix[position] != NULL)
+		{
+			position =  (position + nextPosition);
+				if(position >= matrixSize )
+				{
+					position = (position - matrixSize);
+				}
+		}
+	hashMatrix[position] = value;
+	}
 }
 
 unsigned int getValue()
 {
 }
 
-void printValue()
+void printHashMatrix()
 {
+	int i;
+	for(i = 0; i<matrixSize; i++)
+	{
+		printf("[%u] [%u] \n", i, hashMatrix[i]);
+	}
 } 
 
-int main()
+void main()
 {
+	int i;
+	setHashMatrixNull();
+	generateRandomNumbers();
 
-
-	free(randomNumbersBuffer);
-	return 0;
-
+	for(i = 0; i<bufferSize; i++)
+	{
+		insertValue(randomNumbersBuffer[i]);
+	}
+	printHashMatrix();
 }
 
