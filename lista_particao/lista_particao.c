@@ -1,9 +1,9 @@
 /*
- * Particoes.h
+ * particoes.c
  *
  */
 
-#include "Particoes.h"
+#include "particoes.h"
 #include <stdio.h>
 
 //Método para imprimir cada partição p do conjunto de n elementos.
