@@ -1,38 +1,41 @@
+/*
+ =========================================================================================
+ Regras:
+ 	 Regra 1: Precisa haver '@' && '.' no email.
+ 	 Regra 2: Tamanho do email >= que 7 caracteres (ex.: a@b.com
+ 	 Regra 3: Email não pode ter '.' ou '@' ou '_' na primeira posição
+ 	 Regra 4: Email não pode ter '.' ou '@' ou '_' na última posição
+ 	 Regra 5: Email não pode ter síbolos diferentes de letras, números, '.' , '@' e '_'.
+ 	 Regra 6: No email não pode haver sequencia imediata dos símbolos '.' ou '@' ou '_'.
+ 	 Regra 7: Email só pode ter um símbolo do tipo '@'.
+ 	 Regra 8: Após '@' só pode haver no máximo 2 pontos.
+ 	 Regra 9: Após '@' só pode haver letras ou pontos.
+ 	 Regra 10: Após o '.' que sucede a ocorrência de '@', finalizando o domínio,
+ 	  	  	   a sequencia tem que ser obrigatoriamente 'c' 'o' 'm'. Caso haja um segundo
+ 	  	  	   '.', tem que ser seguide de obrigatoriamente apenas 2 letras.
+ =========================================================================================
+ */
 
 #include "lista_email.h"
 
+#define true 1
+#define false 0
 
-//-------------------------------------------------------------------------------------------------
-// Verificar lógica, VERIFICAR todos os índices para evitar estouro do tamanho dos vetores e
-// verificar se os limites estão corretos.
-// Verificar se os tokens de finalização de string estão corretos e testar com emails falsos e
-// verdadeiros.
-//-------------------------------------------------------------------------------------------------
-
-//se for vazio outra regra
-
-/*
- * Esta função verifica uma cadeia de caracteres para a existência de um
- * endereço de email válido.
- */
 int verifica_email(char *enderecoEmail) {
 	int index=0;
 
-	/*
-	 * Se não tiver arroba e ponto é inválido
-	 *
-	 */
+	//início Regra 1
 	int posArrobaIndex=0;
 	int hasArroba=0;
 	int hasDot=0;
-	while(enderecoEmail[index] != '\0') {
-		if (enderecoEmail[index] == '@') {
-			hasArroba=1;
-			posArrobaIndex=index+1;
-			while(enderecoEmail[posArrobaIndex] !='\0') {
-				if(enderecoEmail[posArrobaIndex] == '.') {
-					hasDot=1;
-					break;
+	while(enderecoEmail[index] != '\0') { //não é fim
+		if (enderecoEmail[index] == '@') { //achou arroba
+			hasArroba=true; //flag hasArroba sobe
+			posArrobaIndex=index+1; //pega próxima posição
+			while(enderecoEmail[posArrobaIndex] !='\0') { //não é fim
+				if(enderecoEmail[posArrobaIndex] == '.') { //se for ponto
+					hasDot=true; //flag hasDot sobe
+					break; //sai com as flags
 				}//fecha if .
 				posArrobaIndex++;
 			}//fecha while
@@ -40,43 +43,34 @@ int verifica_email(char *enderecoEmail) {
 		index++;
 	}//fecha while
 
-	if (hasArroba == 0 || hasDot == 0) {
+	if (hasArroba == false || hasDot == false) { //não tem '.' ou '@'
 		return(false);
 	}
+	//fim Regra 1
 
-	/*
-	 * Verificar se tamanho do email é menor que 'char'@'char'.'char''char''char'
-	 * Ex.: a@b.com (Tamanho mínimo de 7 caracteres).
-	 */
+	//início Regra 2
 	if(strlen(enderecoEmail) < 7) {
 		return(false);
 	}
-	//configurar para aceitar dominio.'char''char'
+	//fim Regra 2
 
-	/*
-	 * Verifica se a primeira posição contém ponto, sublinhado ou arroba; e retorna erro
-	 * caso verdadeiro.
-	 */
+	//início Regra 3
 	if (enderecoEmail[0] == '.' //caso ponto
 		|| enderecoEmail[0] == '_' //ou sublinhado
 				|| enderecoEmail[0] == '@') { //ou arroba
 		return(false);
 	}
+	//fim Regra 3
 
-	/*
-	 * Verifica se a última posição contém ponto, sublinhado ou arroba e retorna erro
-	 * caso verdadeiro.
-	 */
+	//início Regra 4
 	if (enderecoEmail[strlen(enderecoEmail)-1] == '.' //caso ponto
 		|| enderecoEmail[strlen(enderecoEmail)-1] == '_' //ou sublinhado
 			|| enderecoEmail[strlen(enderecoEmail)-1] == '@') { //ou arroba
 		return(false);
 	}
+	//fim Regra 4
 
-	/*
-	 * Verifica se há intens no email, diferentes daqueles do alfabeto.
-	 * Os caracteres aceitos são: Letras, Números, '@', '_' e '.'.
-	 */
+	//início Regra 5
 	while(enderecoEmail[index] != '\0') { //enquanto não for o fim do vetor de caracteres
 		if(!isalpha(enderecoEmail[index]) //se não for alphanumérico
 			&& !isdigit(enderecoEmail[index]) //se não for numeral
@@ -87,13 +81,10 @@ int verifica_email(char *enderecoEmail) {
 		}//fecha if
 		index++;
 	}//fecha while
+	//fim Regra 5
 
+	//início Regra 6
 	index=0; //limpa index
-
-	/*
-	 * Verifica a ocorrência de sequência imediata de caracteres válidos, resultando em combinação inválida
-	 * de caracteres que invalida o email.
-	 */
 	while(enderecoEmail[index] != '\0') {
 		if(enderecoEmail[index] > 0
 			&& enderecoEmail[index] < strlen(enderecoEmail)) {
@@ -144,14 +135,11 @@ int verifica_email(char *enderecoEmail) {
 		}//fecha if
 		index++;
 	}//fecha while
+	//fim Regra 6
 
+	//início Regra 7
 	index=0; //limpa index
 	int arrobaIndex=0;
-
-	/*
-	 * Verifica sé há apenas uma única arroba no email, caso contrário,
-	 * o email é inválido.
-	 */
 	while(enderecoEmail[index] != '\0') {
 		if (enderecoEmail[index] == '@') { //achou arroba
 			arrobaIndex=index+1;
@@ -164,17 +152,15 @@ int verifica_email(char *enderecoEmail) {
 		}//fecha if
 		index++;
 	} //fecha while
+	//fim Regra 7
 
+
+
+	//início Regra 8
 	index=0; //limpa index
 	arrobaIndex=0; //limpa arrobaIndex
 	int primeiroPontoIndex=0;
 	int segundoPontoIndex=0;
-
-//tailan.cardoso.eng@gmail.com
-
-	/*
-	 * Verifica se após o arroba há apenas um ou dois pontos, caso contrário retorna erro.
-	 */
 	while (enderecoEmail[index] != '\0') {
 		if (enderecoEmail[index] == '@') { //achou arroba
 			arrobaIndex=index+1;
@@ -199,13 +185,11 @@ int verifica_email(char *enderecoEmail) {
 		}//fecha if
 		index++;
 	}//fecha while
+	//fim Regra 8
 
+	//início Regra 9
 	index=0;
 	arrobaIndex=0;
-	/*
-	 *	Verifica se após o arroba há apenas letras e pontos.
-	 *	Caso contrário, retorna erro.
-	 */
 	while(enderecoEmail[index] != '\0') {
 		if(enderecoEmail[index] == '@') { //achou arroba
 			arrobaIndex=index+1;
@@ -219,15 +203,12 @@ int verifica_email(char *enderecoEmail) {
 		}//fecha if
 		index++;
 	}//fecha while
+	//fim Regra 9
 
+	//início Regra 10
 	index=0;
 	int domainIndex=0;
 	int comIndex=0;
-
-	/* Verifica se após o ponto que finaliza o domínio, está contido a palavra "com" e, seguindo essa, se e somente se,
-	 * existir um ponto, verifica se é seguido de 2 caracteres alfabéticos.
-	 * Se após as duas últimas letras não for encontrado o fim, retorna inválido.
-	 */
 	while(enderecoEmail[index] != '\0') {
 		if (enderecoEmail[index] == '@') { //se achou arroba
 			domainIndex=index+1; //recebe o valor do índice seguinte
@@ -280,14 +261,10 @@ int verifica_email(char *enderecoEmail) {
 		}//fecha if
 		index++;
 	}//fecha while
+	//fim Regra 10
 
-
-	/*
-	 * Se a procura de erros falhar, a função retorna 0 (verdadeiro).
-	 * Isso caracteriza o email como válido.
-	 */
+	//se chegar nesse ponto, o email é válido.
 	return (true);
-
 }
 
 

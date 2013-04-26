@@ -1,14 +1,21 @@
+/*
+ ============================================================================
+ Name        : main.c
+ Author      : Equipe 01 - Compiladores - S1 - 2013
+ Version     : 0.5b
+ Copyright   : Código pode ser utilizado e compartilhado abertamente.
+ Description : Lê cadeia de caracteres e tenta identificar email válido, de
+  	  	  	   acordo com regras pré-estabelecidas.
+ ============================================================================
+ */
 
 #include "lista_email.h"
-
-
 
 #define true 1
 #define false 0
 
 /*
- * Questão 2 - Validador de emails. Lê lista com emails via parâmetros e gera saída em aqrquivo de texto.
- * Utilizar autômatos para executar verificação.
+ * Questão 2 -
  */
 
 int main(void) {
