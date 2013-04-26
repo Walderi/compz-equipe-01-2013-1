@@ -124,9 +124,18 @@ int random_number() {
 
 	srand(time(NULL ));
 
+	//numrandom = aleatorio(time null) % MAXvalue;
 	numrandom = rand() % MAXvalue;
 
 	return numrandom;
+}
+
+/*usa essa função aqui para os numeros aleatorios, pois a função rand do C não cria numeros tão altos */
+__int64 aleatorio(__int64 a) {
+	__int64  x;
+         x = a;
+         x = (3202034522624059733LL*x + 4354685564936845319LL) / 4294967291LL;
+         return x;
 }
 
 void mostrar_value(int localizador2) {
