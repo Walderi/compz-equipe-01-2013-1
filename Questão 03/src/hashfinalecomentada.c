@@ -72,37 +72,47 @@ int somar_numeros(int num, int divisor) { //Função que vai retornar a soma dos i
 	}
 	return soma;
 }
-
-int hashing(int value) { // Função onde irá ser feito o hasing(distribuição dos valores) na tabela
+/*
+	A função hasing() tem como objetivo encaixar o valor passado em algum lugar da tabela
+Ela recebe como parametro um valor, que será o valor desejado para se encaixar na tabela
+cada vez que a função é chamada ela iniciliaza o indice, o divisor com 10^6 e essa variavel 
+indice recebe o resultado da função somar_numeros, já discutida anteriormente. O tratamento
+dado foi trabalhando o erro, se na posição de indice da tabela ja estiver sido ocupada por outro
+valor, entao ele entra em um loop, acresentando sempre +1 ao indice, até encontrar um local para 
+guardar a variavel. Caso chegue ao fim da tabela nesse loop sem encontrar um valor final, ele volta
+para o inicio da tabela até encontrar, do inicio, um local para armazenar esse valor.
+*/
+int hashing(int value) { 									// Função onde irá ser feito o hasing(distribuição dos valores) na tabela
 	int indice;
 	divisor = 1000000;
 	soma=0;
-	indice = somar_numeros(value, divisor) - 1; // Retornará para a variavel indice a soma dos indices do numero passado como parametro
+	indice = somar_numeros(value, divisor) - 1; 			// Retornará para a variavel indice a soma dos indices do numero passado como parametro
 
-	if (hash[indice] != 0) {//Se na posição do indice já estiver ocupado, fará um tratamento para achar alguma posição disponivel
+	if (hash[indice] != 0) {								//Se na posição do indice já estiver ocupado, fará um tratamento para achar alguma posição disponivel
 		int boolean = 1;
-		while (boolean) {// enquanto a variavel boolean for verdadeira, ele irá acresentar 5 unidades
-			indice = indice + 1;// em cada unidade do indice até encontrar um local vazio para salvar o valor
+		while (boolean) {									// enquanto a variavel boolean for verdadeira, ele irá acresentar 5 unidades
+			indice = indice + 1;							// em cada unidade do indice até encontrar um local vazio para salvar o valor
 			if (hash[indice] != 0) {
 				boolean = 1;
 			} else {
 
 				hash[indice] = value;
-				printf("gerou %d\n", indice);
+				printf("ocupou %d\n", indice); 				//emiti o valor do indice ocupado pelo valor
 				boolean = 0;
 			}
-			if (indice >= MAXtab) {				// Se forem varridos todos os indices e não achar lugar disponiveis....
+			if (indice >= MAXtab) {							// Se forem varridos todos os indices e não achar lugar disponiveis....
 
-			printf("O Numero nao achou indice seguindo o padrão de hashing\n");  // ... ELe exibe a mensagem de erro
+			
 			indice = 0;
-			while (boolean) {// enquanto a variavel boolean for verdadeira, ele irá acresentar 1 unidade
-						//indice = indice + 1;// em cada unidade do indice até encontrar um local vazio para salvar o valor
+			while (boolean) {								// enquanto a variavel boolean for verdadeira, ele irá acresentar 1 unidade
+					
 						if (hash[indice] != 0) {
-							indice = indice + 1;// em cada unidade do indice até encontrar um local vazio para salvar o valor	
+							indice = indice + 1;			// em cada unidade do indice até encontrar um local vazio para salvar o valor	
 							boolean = 1;
 						} else {
 							hash[indice] = value;
-											//printf("Achou %d\n", indice);
+							printf("ocupou %d\n", indice); //emiti o valor do indice ocupado pelo valor
+											
 											boolean = 0;
 										}
 						}
@@ -114,38 +124,37 @@ int hashing(int value) { // Função onde irá ser feito o hasing(distribuição dos 
 
 	} else {
 
-		hash[indice] = value; // se não houver nada nesse indice na tabela, o valor será setado nesse local na tabela
-		printf("gerou %d\n", indice);
+		hash[indice] = value; 							// se não houver nada nesse indice na tabela, o valor será setado nesse local na tabela
+		printf("ocupou %d\n", indice);					//emiti o valor do indice ocupado pelo valor
 	}
 
 	return 1;
 }
 
-void busca_localizacao(int value) {	// Função que vai buscar onde está localizado o valor passado como parametro
+void busca_localizacao(int value) {						// Função que vai buscar onde está localizado o valor passado como parametro
 
 	int indice;
 	indice = somar_numeros(value, divisor);
-	if (hash[indice] != value) {//Se na posição do indice já estiver ocupado, fará um tratamento para achar alguma posição disponivel
+	if (hash[indice] != value) {						//Se na posição do indice já estiver ocupado, fará um tratamento para achar a posição do valor
 		int boolean = 1;
-		while (boolean) {// enquanto a variavel boolean for verdadeira, ele irá acresentar 5 unidades
-			indice = indice + 1;// em cada unidade do indice até encontrar um local vazio para salvar o valor
+		while (boolean) {								// enquanto a variavel boolean for verdadeira, ele irá acresentar 1 unidade
+			indice = indice + 1;						// em cada unidade do indice até encontrar o local do valor
 
 			boolean = 1;
-			if (indice >= MAXtab) {
+			if (indice >= MAXtab) {						// Se o indice estourar o valor max da tabela, ele começará do zero na tabela
 				int	indicenovo;
 
-				for( indicenovo = 0; indicenovo < indice; indicenovo++){ 				// Fará a busca de zero até o indice inicial para ve se encontra esse valor
+				for( indicenovo = 0; indicenovo < indice; indicenovo++){ // Fará a busca de zero até o indice inicial para ve se encontra esse valor
 					if(hash[indicenovo] == value){
-						break;
-					}
+							break;						// Faz um break no momento em que ele achar o valor de procura na tabela								
+					}									// Salvando o indicenovo como posição do valor
 				}
-				if(indicenovo == indice){
-			printf("O valor de %d, não está localizado na tabela  \n",
-						value);
+				if(indicenovo == indice){				// Se ele chegar na mesma posição do indice antigo é sinal que ele percorreu
+			printf("O valor de %d, não está localizado na tabela  \n",value);// percorreu toda a tabela e não achou o valor
 			boolean = 0;
 				} else{
-					printf("O valor de %d, está localizado em: %d;  \n", value,
-					indicenovo);	//Imprime onde está localizado o valor
+					printf("O valor de %d, está localizado em: %d;  \n", value, 
+					indicenovo);						//Imprime onde está localizado o valor onde está localizado o indice do valor encontrado  
 				boolean = 0;
 
 				}
@@ -154,7 +163,7 @@ void busca_localizacao(int value) {	// Função que vai buscar onde está localizad
 			if (hash[indice] == value) {
 
 				printf("O valor de %d, está localizado em: %d;  \n", value,
-						indice);	//Imprime onde está localizado o valor
+						indice);						//Imprime onde está localizado o valor caso ele o encontre sem precisar zerar o indice
 				boolean = 0;
 			}
 
@@ -162,13 +171,18 @@ void busca_localizacao(int value) {	// Função que vai buscar onde está localizad
 
 	} else {
 
-		printf("O valor de %d, está localizado em: %d;  \n", value, indice);//Imprime onde está localizado o valor
+		printf("O valor de %d, está localizado em: %d;  \n", value, indice);
+													//Imprime onde está localizado o valor caso ele seja encontrado na primeira tentativa, sem incrementar o indice
 
 	}
 
 
 }
+/*
+	A função random_number é responsavel pela randomização dos numero que 
+serão acresentados na tabela
 
+*/
 int random_number() {
 
 	srand(time(NULL ));
@@ -178,20 +192,30 @@ int random_number() {
 	return numrandom;
 }
 
+/*
+	A função mostrar_value irá mostrar o valor que está localizado
+na tabela utilizando o localizador do numero passado como parametro
+
+*/
 void mostrar_value(int localizador2) {
 
 	if (localizador2 < MAXtab)
-		printf("o numero presente nesse local é: %d \n", hash[localizador2]);
+		printf("o numero presente nesse local é: %d \n", hash[localizador2]); // Imprime o valor, caso o localizador passado pertença a tabela
 	else
 		printf("Valor excedido ao tamanho da tabela!! \n");
 }
+/*
+	A função deletar_valor() tem como objetivo deletar o valor 
+presente dentro da tabela utilizando o localizador passado como
+parametro da função
 
+*/
 void deletar_valor( localizador) {
 	if (localizador < MAXtab) {
 
 		hash[localizador] = 0;
 
-		printf("Valor setado como 0 com SUCESSO!!!\n");
+		printf("Valor setado como 0 com SUCESSO!!!\n");			//Só apaga o valor se o localizador existir na tabela
 
 
 	} else {
@@ -199,7 +223,11 @@ void deletar_valor( localizador) {
 	}
 
 }
-
+/*
+	A função main() é a responsavel por chamar todas as outras
+através de um menu de opções que é utilizado pelo usuário
+do programa
+*/
 int main() {		// Inicia a função Main
 	int numero;
 	printf("!!!!!Bem Vindo!!!!!\n");
