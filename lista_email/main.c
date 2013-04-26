@@ -6,6 +6,9 @@
 
 #define MAX_TAM_STR 80
 
+#define true 1
+#define false 0
+
 /*
  * Questão 2 - Validador de emails. Lê lista com emails via parâmetros e gera saída em aqrquivo de texto.
  * Utilizar autômatos para executar verificação.
@@ -14,9 +17,6 @@
 int main(void) {
 	//Variáveis de instância
 	char email[MAX_TAM_STR];
-
-
-	printf("Rodei");
 
 	while(scanf("%s",email) != EOF) {
 			if(verifica_email(email)) {
@@ -27,5 +27,5 @@ int main(void) {
 			}
 		}
 
-	return(0);
+	return(true);
 }

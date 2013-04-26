@@ -5,7 +5,8 @@
 #include "lista_email.h"
 
 #define MAX_TAMA_STR 80
-
+#define true 1
+#define false 0
 
 //-------------------------------------------------------------------------------------------------
 // Verificar lógica, VERIFICAR todos os índices para evitar estouro do tamanho dos vetores e
@@ -24,11 +25,37 @@ int verifica_email(char *enderecoEmail) {
 	int index=0;
 
 	/*
+	 * Se não tiver arroba e ponto é inválido
+	 *
+	 */
+	int posArrobaIndex=0;
+	int hasArroba=0;
+	int hasDot=0;
+	while(enderecoEmail[index] != '\0') {
+		if (enderecoEmail[index] == '@') {
+			hasArroba=1;
+			posArrobaIndex=index+1;
+			while(enderecoEmail[posArrobaIndex] !='\0') {
+				if(enderecoEmail[posArrobaIndex] == '.') {
+					hasDot=1;
+					break;
+				}//fecha if .
+				posArrobaIndex++;
+			}//fecha while
+		}//fecha if @
+		index++;
+	}//fecha while
+
+	if (hasArroba == 0 || hasDot == 0) {
+		return(false);
+	}
+
+	/*
 	 * Verificar se tamanho do email é menor que 'char'@'char'.'char''char''char'
 	 * Ex.: a@b.com (Tamanho mínimo de 7 caracteres).
 	 */
 	if(strlen(enderecoEmail) < 7) {
-		return(1);
+		return(false);
 	}
 	//configurar para aceitar dominio.'char''char'
 
@@ -39,7 +66,7 @@ int verifica_email(char *enderecoEmail) {
 	if (enderecoEmail[0] == '.' //caso ponto
 		|| enderecoEmail[0] == '_' //ou sublinhado
 				|| enderecoEmail[0] == '@') { //ou arroba
-		return(1);
+		return(false);
 	}
 
 	/*
@@ -49,7 +76,7 @@ int verifica_email(char *enderecoEmail) {
 	if (enderecoEmail[strlen(enderecoEmail)-1] == '.' //caso ponto
 		|| enderecoEmail[strlen(enderecoEmail)-1] == '_' //ou sublinhado
 			|| enderecoEmail[strlen(enderecoEmail)-1] == '@') { //ou arroba
-		return(1);
+		return(false);
 	}
 
 	/*
@@ -62,7 +89,7 @@ int verifica_email(char *enderecoEmail) {
 				&& enderecoEmail[index]!= '@' //se não for arroba
 					&& enderecoEmail[index] != '.' //se não for ponto
 						&& enderecoEmail[index] != '_') { //se não for sublinhado
-			return (1);
+			return (false);
 		}//fecha if
 		index++;
 	}//fecha while
@@ -78,47 +105,47 @@ int verifica_email(char *enderecoEmail) {
 			&& enderecoEmail[index] < strlen(enderecoEmail)) {
 			if(enderecoEmail[index] == '.'
 				&& enderecoEmail[index+1] == '.') { //ponto ponto
-				return(1);
+				return(false);
 			}
 
 			if(enderecoEmail[index] == '_'
 				&& enderecoEmail[index+1] == '_') {//sublinhado sublinhado
-				return(1);
+				return(false);
 			}
 
 			if(enderecoEmail[index] == '.'
 				&& enderecoEmail[index+1] == '_') {//ponto sublinhado
-				return(1);
+				return(false);
 			}
 
 			if(enderecoEmail[index] == '_'
 				&& enderecoEmail[index+1] == '.') {//sublinhado ponto
-				return(1);
+				return(false);
 			}
 
 			if(enderecoEmail[index] == '@'
 				&& enderecoEmail[index+1] == '@') {//arroba arroba
-				return(1);
+				return(false);
 			}
 
 			if(enderecoEmail[index] == '@'
 				&& enderecoEmail[index+1] == '.') {//arroba ponto
-				return(1);
+				return(false);
 			}
 
 			if(enderecoEmail[index] == '@'
 				&& enderecoEmail[index+1] == '_') {//arroba sublinhado
-				return(1);
+				return(false);
 			}
 
 			if(enderecoEmail[index] == '_'
 				&& enderecoEmail[index+1] == '@') {//sublinhado arroba
-				return(1);
+				return(false);
 			}
 
 			if(enderecoEmail[index] == '.'
 				&& enderecoEmail[index+1] == '@') {//ponto arroba
-				return(1);
+				return(false);
 			}
 		}//fecha if
 		index++;
@@ -136,7 +163,7 @@ int verifica_email(char *enderecoEmail) {
 			arrobaIndex=index+1;
 			while (enderecoEmail[arrobaIndex] != '\0') {
 				if(enderecoEmail[arrobaIndex] == '@') { //achou segunda
-					return(1);
+					return(false);
 				}//fecha if
 				arrobaIndex++;
 			}//fecha while
@@ -149,6 +176,8 @@ int verifica_email(char *enderecoEmail) {
 	int primeiroPontoIndex=0;
 	int segundoPontoIndex=0;
 
+//tailan.cardoso.eng@gmail.com
+
 	/*
 	 * Verifica se após o arroba há apenas um ou dois pontos, caso contrário retorna erro.
 	 */
@@ -157,13 +186,13 @@ int verifica_email(char *enderecoEmail) {
 			arrobaIndex=index+1;
 			while(enderecoEmail[arrobaIndex] != '\0') {
 				if (enderecoEmail[arrobaIndex] == '.'){ //achou ponto seguindo arroba
-					primeiroPontoIndex=arrobaIndex;
+					primeiroPontoIndex=arrobaIndex+1;
 					while(enderecoEmail[primeiroPontoIndex] != '\0') {
 						if(enderecoEmail[primeiroPontoIndex] == '.') { //achou segundo ponto seguindo arroba
-							segundoPontoIndex = primeiroPontoIndex;
+							segundoPontoIndex = primeiroPontoIndex+1;
 							while(enderecoEmail[segundoPontoIndex] != '\0') {
-								if(enderecoEmail[segundoPontoIndex == '.']) { //achou terceiro ponto, inválido
-									return(1);
+								if(enderecoEmail[segundoPontoIndex] == '.') { //achou terceiro ponto, inválido
+									return(false);
 								}//fecha if
 								segundoPontoIndex++;
 							}//fecha while
@@ -189,7 +218,7 @@ int verifica_email(char *enderecoEmail) {
 			while(enderecoEmail[arrobaIndex] != '\0') {
 				if(!isalpha(enderecoEmail[arrobaIndex])  //não é letra
 					&& enderecoEmail[arrobaIndex] != '.' ) { //e não é ponto
-					return(1); //falso
+					return(false); //falso
 				}//fecha if
 				arrobaIndex++;
 			}//fecha while
@@ -210,42 +239,47 @@ int verifica_email(char *enderecoEmail) {
 			domainIndex=index+1; //recebe o valor do índice seguinte
 			while(enderecoEmail[domainIndex] != '\0') {
 				if(enderecoEmail[domainIndex] == '.') { //achou ponto que finaliza domínio
-					comIndex = domainIndex+1;
-					if((enderecoEmail[comIndex+1] != '\0' //não é o fim
-						&& enderecoEmail[comIndex+1] != 'c') //não é c
-							|| enderecoEmail[comIndex+1] == '\0' ) { //ou é o fim
-						return(1); //erro
-					}//fecha if
-
-					if((enderecoEmail[comIndex+2] != '\0' //não é o fim
-						&& enderecoEmail[comIndex+2] != 'o') //não é o
-							|| enderecoEmail[comIndex+2] == '\0') { //ou é o fim
-						return(1); //erro
-					}//fecha if
-
-					if((enderecoEmail[comIndex+3] != '\0' //não é o fim
-						&& enderecoEmail[comIndex+3] != 'm')//não é m
-							|| enderecoEmail[comIndex+3] == '\0') { //ou é o fim
-						return(1);//erro
-					}//fecha if
-
-					if (enderecoEmail[comIndex+4] != '\0'
-						&& enderecoEmail[comIndex+4] == '.') { //se existir ponto dps de com
-
-						if (enderecoEmail[comIndex+5] != '\0'
-								&& !isalpha(enderecoEmail[comIndex+5])) { //se não for fim e não for letra
-							return(1);//erro
+					if(comIndex > 0) {
+						break;
+					}
+					else {
+						comIndex = domainIndex+1;
+						if((enderecoEmail[comIndex] != '\0' //não é o fim
+								&& enderecoEmail[comIndex] != 'c') //não é c
+								|| enderecoEmail[comIndex] == '\0' ) { //ou é o fim
+							return(false); //erro
 						}//fecha if
 
-						if (enderecoEmail[comIndex+6] != '\0'
-							&& !isalpha(enderecoEmail[comIndex+6])) { //se não for fim e não for letra
-							return(1);
+						if((enderecoEmail[comIndex+1] != '\0' //não é o fim
+								&& enderecoEmail[comIndex+1] != 'o') //não é o
+								|| enderecoEmail[comIndex+1] == '\0') { //ou é o fim
+							return(false); //erro
 						}//fecha if
 
-						if (enderecoEmail[comIndex+7] != '\0') { //se não for fim após segunda letra de país
-							return(1);
-						}
-					}//fecha if
+						if((enderecoEmail[comIndex+2] != '\0' //não é o fim
+								&& enderecoEmail[comIndex+2] != 'm')//não é m
+								|| enderecoEmail[comIndex+2] == '\0') { //ou é o fim
+							return(false);//erro
+						}//fecha if
+
+						if (enderecoEmail[comIndex+3] != '\0'
+								&& enderecoEmail[comIndex+3] == '.') { //se existir ponto dps de com
+
+							if (enderecoEmail[comIndex+4] != '\0'
+									&& !isalpha(enderecoEmail[comIndex+4])) { //se não for fim e não for letra
+								return(false);//erro
+							}//fecha if
+
+							if (enderecoEmail[comIndex+5] != '\0'
+									&& !isalpha(enderecoEmail[comIndex+5])) { //se não for fim e não for letra
+								return(false);
+							}//fecha if
+
+							if (enderecoEmail[comIndex+6] != '\0') { //se não for fim após segunda letra de país
+								return(false);
+							}
+						}//fecha if
+					}//fecha else
 				}//fecha if
 				domainIndex++;
 			}//fecha while
@@ -258,7 +292,7 @@ int verifica_email(char *enderecoEmail) {
 	 * Se a procura de erros falhar, a função retorna 0 (verdadeiro).
 	 * Isso caracteriza o email como válido.
 	 */
-	return (0);
+	return (true);
 
 }
 
