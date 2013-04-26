@@ -4,17 +4,17 @@
 
 #include "lista_email.h"
 
-#define MAX_TAMANHO_STRING 80
+#define MAX_TAMA_STR 80
 
 
 //-------------------------------------------------------------------------------------------------
 // Verificar lógica, VERIFICAR todos os índices para evitar estouro do tamanho dos vetores e
 // verificar se os limites estão corretos.
 // Verificar se os tokens de finalização de string estão corretos e testar com emails falsos e
-// verdadeiros. ;)
+// verdadeiros.
 //-------------------------------------------------------------------------------------------------
 
-
+//se for vazio outra regra
 
 /*
  * Esta função verifica uma cadeia de caracteres para a existência de um
@@ -30,6 +30,7 @@ int verifica_email(char *enderecoEmail) {
 	if(strlen(enderecoEmail) < 7) {
 		return(1);
 	}
+	//configurar para aceitar dominio.'char''char'
 
 	/*
 	 * Verifica se a primeira posição contém ponto, sublinhado ou arroba; e retorna erro
