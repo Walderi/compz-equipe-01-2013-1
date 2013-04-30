@@ -1,5 +1,5 @@
-%{
-/* Questão 2 utilizando Lex */
+{
+/*Validador de email em flex */
 %}
 
 EMAIL [a-zA-Z][\.\_ \- a-z0-9]*[@][a-z0-9]+([\.][a-z]+){1,2}[\r|\n|\t]*
