@@ -1,11 +1,22 @@
 Revisitar REGRAS e Inspecionar/Fixar Código C gerado pelo FLEX
+* Corrigiu ponto em sequência de ponto
+* Corrigiu ponto seguido de nada no usuário
+* Corrigiu letra maiúscula após ponto
+* Corrigiu impressão de falso
 
 Verificar lista de e-mails(arquivo-emails1.txt) e inserir mais emails inválidos.
 
 Verificar Makefile, decidir se instruções estão de acordo com as solicitadas pelo professor Jucimar.
+* Tem que fazer o clean ao executar make
+* Tem que especificar no makefile, qual instrução vem primeiro
+* Restos da compilação não incluem o executável gerado
+
 
 Decidir nome da Linguagem e CRIAR WIKI!!!!!!!!!!!!!!!!!!
+* DirectC
+
 
 VERIFICAR NOVO REPOSITÓRIO DO GITHUB!!!!!!!!!!!!!!
+*git@github.com:Walderi/DirectG.git
 
 by George Lucas Gomes 
