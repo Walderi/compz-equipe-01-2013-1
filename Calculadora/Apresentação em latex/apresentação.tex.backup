@@ -1,0 +1,74 @@
+\documentclass{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage{default}
+\usepackage{cambrigeUS}
+
+\useoutertheme{infolines}
+
+\title[Introdução ao Flex e Bison]{Introdução ao Flex e Bison}
+\author[Lucas, André, George, Luis, Walderi]
+       {Lucas Begnini Costa // André Moreira // George Lucas // Luis Sergio // Walderi}
+			
+	\institute[UEA]{Universidade do Estado do Amazonas}
+\date{\today}
+
+\begin{document}  % Inicio dos slides
+%Slide Inicial - Inicio
+
+\begin{frame}[plain] % Frame significa Slide, entao toda vez que
+    \titlepage   	% tiver begin e end Frame significa que o slide 
+		    % tem tudo oq há entre os  2
+	
+            \begin{figure} 	%para inserir figura basta fazer o mesmo que frame
+            \centering		% Significa que a figura está centralizada no slide
+            \includegraphics[scale=0.41]{simbolouea} %A figura pra ser add assim tem q ta no diretorio do tex
+            \end{figure}
+	\date{\today}  		% Insere a data da compilação
+\end{frame}			% Fim do primeiro slide
+
+\frame{\titlepage}
+
+% Slide Inicial - Final
+%Slide 02 - Inicio
+
+
+\begin{frame}
+  \frametitle{Sumário}		% Insere o titulo do Slide
+  \tableofcontents		% Insere tudo o conteudo existente nos slides
+\end{frame}			% Processo feito automaticamente
+
+
+%Slide 02 - Fim
+%Slide 03 - Inicio
+\section{Introdução}		% Delimito o titulo da nova sessao, ou seja, capitulo
+\begin{frame} 			% Inicializo o slide 
+\frametitle{Introdução}
+  Este trabalho tem como intuito apresentar a construção de uma calculadora	% Assunto que irá 
+ que será utilizada através de linha de comando e interpretada através de:	%ficar dentro do slide
+ 
+    \begin{itemize} 				% Assim inicializa os itens 
+     \item<1-> Flex - Analisador léxico    	% esse ``1'' dentro de < .. > 
+     \item<2-> Bison - Analisador semântico	 % Simboliza a ordem que será mostrado os itens 
+    \end{itemize}				% Finaliza os itens 
+  Mas para apresentar a calculadora será necessário uma breve apresentação a respeito de
+ Flex e Bison
+
+\end{frame}			% Finalizo o slide
+
+\section{FLEX}			%Inicio da sessão do flex
+%Slide 04 - Inicio
+\begin{frame}
+\frametitle{FLEX}
+  Como falado anteriormente o Flex é uma ferramenta para criação de analisadores Léxicos que
+ procura padrões de escrita através de expressões regulares definidas dentro dos analisadores léxicos.
+  Como resultado 
+ 
+
+\end{frame}
+
+%Slide 05 - Inicio
+
+
+
+\end{document}
