@@ -68,10 +68,21 @@
   Como resultado, depois da compilação do arquivo flex feito, é gerado um arquivo em C que valida
  todas as expressões regulares definidas no arquivo que passará pelo Flex
  
-
 \end{frame}
 
 %Slide 05 - Inicio
+\subsection{Instalando Flex no Linux}
+\begin{frame}
+\frametitle{Instalando Flex no  Linux}
+	Antes de fazer qualquer coisa para criação do arquivo flex é necessário inicialmente a instalação do 
+compilador flex no sistema operacional, no caso utilizado foi o Linux Ubuntu 13.04.
+	Para instalação é necessário abrir o terminal e por linha de comando digitar: 
+			\$ sudo apt-get install flex
+\end{frame}
+
+
+
+%Slide 06- Inicio
 \begin{frame}
 \frametitle{Criando um arquivo para o Flex}
 
@@ -88,18 +99,98 @@
 A primeira para delimitação das expressões regulares que serão consideradas, e a segunda as ações que serão
 tomadas caso encontre as expressões regulares definidas anteriormente.Como podemos ver no exemplo seguinte:
  \href{https://github.com/Walderi/compz-equipe-01-2013-1/blob/master/ValidaEmailFlex/valida_email.lex}{\textcolor{red}{Exemplo de Flex}}
+ %A Função href cria um hyperlink com algum endereço URL, e mostra na apresentação a palavra no segundo {} q no caso aparecerá em VERMELHO!
  
 \end{frame}
+ 
 % Slide 08 - inicio 
 \begin{frame}
-
 \frametitle{Criando um arquivo para o Flex}
+	Para compilação de um arquivo flex é necessário 2 etapas:
+	  \begin{itemize} 				% Assim inicializa os itens 
+	    \item<1->   Compilação em flex primeiro do seguinte modo, pela linha de comando do linux:	% esse ``1'' dentro de < .. > 
+	    \item<2-> flex -o nome-do-programa.lex.c nome-do-programa.lex
+	    \item<3-> Em seguida é necessária a compilação em GCC com o seguinte comando\:
+	    \item<4-> gcc -o nome-do-programa nome-do-programa.lex.c -lfl
+    \end{itemize}
 
+	Na primeira compilação ele pega arquivo de flex e gera um arquivo .C que vai validar as expressões regulares 
+O parametro "-lfl" passado na compilação do gcc serve pra identificar que foi usado o flex pra gerar o .C
 
+	
+\end{frame}
+
+%slide 09 - inicio 
+\section{Bison}
+\begin{frame}
+\frametitle{Bison}
 
 
 \end{frame}
-%slide 09 - inicio 
+%Slide 10 - inicio
+\subsection{Instalando Bison no Linux}
+\begin{frame}
+\frametitle{Instalando o Bison no Linux}
+
+
+\end{frame}
+
+%Slide 11 - inicio
+\subsection{Criando um arquivo para o Bison}
+\frametitle{Criando um arquivo para o Bison}
+\begin{frame}
+
+		FALAR SOBRE A EXTENÇÃO DOS ARQUIVOS PARA O BISON
+
+\end{frame}
+
+%slide 12 - Inicio
+\begin{frame}
+\frametitle{Criando um arquivo para o Bison}
+		FALAR SOBRE COMO É ORGANIZADO O BISON E FAZER UM LINK COM ALGUM EXEMPLO "HELLO WORLD" PARA ILUSTRAR
+	
+\end{frame}
+
+%Slide 13 - Inicio 
+\begin{frame}
+\frametitle{Criando um arquivo para o Bison}
+		FALAR SOBRE COMO É PARA COMPILAR UM ARQUIVO DO BISON E OQUE RESULTA? SE RESULTA EM ALGUMA COISA? E SE DAR 
+		DE COMPILAR.. ESSAS COISAS!
+	
+\end{frame}
+%Slide 14 - Inicio
+\section{Calculadora}
+\begin{frame}
+\frametitle{Calculadora}
+FALAR COMO FUNCIONARÁ A CALCULADORA
+\end{frame}
+
+%Slide 15 - Inicio
+\subsection{Arquivo Flex da Calculadora}
+
+\begin{frame}
+\frametitle{Arquivo Flex da Calculadora}
+FALAR COMO ESTÁ ORGANIZADO O ARQUIVO FLEX DA CALCULADORA E APONTAR UM LINK AO ESTILO DO SLIDE 07 PARA O NOSSO GIT, PARA MOSTRAR
+O ARQUIVO FLEX LÁ... PRA MOSTRAR QUE ESTAMOS FAZENDO SERVIÇO
+
+
+\end{frame}
+
+%Slide 16 - Inicio
+\subsection{Arquivo Bison da Calculadora}
+
+\begin{frame}
+\frametitle{Arquivo Bison da Calculadora}
+FALAR COMO ESTÁ ORGANIZADO O ARQUIVO BISON DA CALCULADORA E APONTAR UM LINK AO ESTILO DO SLIDE 07 PARA O NOSSO GIT, PARA MOSTRAR
+O ARQUIVO FLEX LÁ... PRA MOSTRAR QUE ESTAMOS FAZENDO SERVIÇO
+
+\end{frame}
+
+
 
 
 \end{document}
+
+
+
+

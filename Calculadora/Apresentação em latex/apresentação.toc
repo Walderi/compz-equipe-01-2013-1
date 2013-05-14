@@ -1,3 +1,12 @@
 \beamer@endinputifotherversion {3.10pt}
 \beamer@sectionintoc {1}{Introdu\IeC {\c c}\IeC {\~a}o}{4}{0}{1}
 \beamer@sectionintoc {2}{FLEX}{6}{0}{2}
+\beamer@subsectionintoc {2}{1}{Instalando Flex no Linux}{7}{0}{2}
+\beamer@subsectionintoc {2}{2}{Criando um arquivo para o Flex}{8}{0}{2}
+\beamer@sectionintoc {3}{Bison}{14}{0}{3}
+\beamer@subsectionintoc {3}{1}{Instalando Bison no Linux}{15}{0}{3}
+\beamer@subsectionintoc {3}{2}{Criando um arquivo para o Bison}{16}{0}{3}
+\beamer@sectionintoc {4}{Calculadora}{19}{0}{4}
+\beamer@subsectionintoc {4}{1}{Arquivo Flex da Calculadora}{20}{0}{4}
+\beamer@subsectionintoc {4}{2}{Arquivo Bison da Calculadora}{21}{0}{4}
+\beamer@subsectionintoc {4}{3}{\IeC {\'A}rvore Sint\IeC {\'a}tica da Calculadora }{22}{0}{4}
