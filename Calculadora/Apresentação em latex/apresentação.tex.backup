@@ -1,8 +1,11 @@
 \documentclass{beamer}
 
-\usepackage[utf8]{inputenc}
+\usepackage[utf8]{inputenc} % permite a escrita com acento
 \usepackage{default}
-\usepackage{cambrigeUS}
+
+
+\usepackage{listings}       % Pacote Listings para inclusão de codigo-fonte no documento
+\usepackage{hyperref}	% Pacote para criar links
 
 \useoutertheme{infolines}
 
@@ -62,13 +65,41 @@
 \frametitle{FLEX}
   Como falado anteriormente o Flex é uma ferramenta para criação de analisadores Léxicos que
  procura padrões de escrita através de expressões regulares definidas dentro dos analisadores léxicos.
-  Como resultado 
+  Como resultado, depois da compilação do arquivo flex feito, é gerado um arquivo em C que valida
+ todas as expressões regulares definidas no arquivo que passará pelo Flex
  
 
 \end{frame}
 
 %Slide 05 - Inicio
+\begin{frame}
+\frametitle{Criando um arquivo para o Flex}
 
+  Para a criação de um arquivo para o flex não é necessário nenhuma extensão especifica, podendo ser 
+ o que o desenvolvedor quiser, mas como um ato de boa pratica de programação, padronizou-se como .lex ou 
+ .l para melhor distinguir de outros arquivos.
+
+\end{frame}
+%Slide 07 - Inicio
+\begin{frame}
+\frametitle{Criando um arquivo para o Flex}
+
+  Dentro do programa há duas partes, separado por ``\%\%`` dividindo o programa em duas partes: %%Tem q ter o \ porque % é um caracter reservado do latex
+A primeira para delimitação das expressões regulares que serão consideradas, e a segunda as ações que serão
+tomadas caso encontre as expressões regulares definidas anteriormente.Como podemos ver no exemplo seguinte:
+ \href{https://github.com/Walderi/compz-equipe-01-2013-1/blob/master/ValidaEmailFlex/valida_email.lex}{\textcolor{red}{Exemplo de Flex}}
+ 
+\end{frame}
+% Slide 08 - inicio 
+\begin{frame}
+
+\frametitle{Criando um arquivo para o Flex}
+
+
+
+
+\end{frame}
+%slide 09 - inicio 
 
 
 \end{document}
