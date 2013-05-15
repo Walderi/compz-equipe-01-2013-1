@@ -4,7 +4,7 @@
 
 \usepackage[utf8]{inputenc} % permite a escrita com acento
 \usepackage{default}
-\usetheme{Antibes}
+\usetheme{CambridgeUS}
 
 
 \usepackage{listings}       % Pacote Listings para inclusão de codigo-fonte no documento
