@@ -15,6 +15,10 @@ and [aA][nN][dD]
 order [oO][rR][dD][eE][rR]
 by [bB][yY]
 orderby {order}{white}{by}
+like [lL][iI][kK][eE]
+palavra [a-zA-Z]+
+as [aA][sS]
+origem {palavra}+{integer}?
 
 %%
 
@@ -23,15 +27,21 @@ orderby {order}{white}{by}
  return NUMBER;
 }
 
-{select} 	return SELECT
-{from} 		return FROM
-{where}		return WHERE
-{and} 		return AND
-{orderby} 	return ORDERBY
-"+"		return MAIS
-"-"		return MENOS
+{select} 	return SELECT;
+{from} 		return FROM;
+{where}		return WHERE;
+{and} 		return AND;
+{like}		return LIKE;
+{orderby} 	return ORDERBY;
+{as}		return AS;
+{origem}	return ORIGEM;
+"+"		return MAIS;
+"-"		return MENOS;
 "*" 		return ASTERISCO;
 "/" 		return DIVIDE;
 "(" 		return ABRE;
 ")" 		return FECHA;
-";" 		return END
+";" 		return END;
+"="		return EQUALS;
+"\'"		return ASPAS;
+
