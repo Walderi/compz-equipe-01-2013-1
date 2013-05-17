@@ -19,6 +19,9 @@ like [lL][iI][kK][eE]
 palavra [a-zA-Z]+
 as [aA][sS]
 origem {palavra}+{integer}?
+group [gG][rR][oO][uU][pP]
+groupby {group}{white}{by} 
+limit [lL][iI][mM][iI][tT]
 
 %%
 
@@ -33,8 +36,10 @@ origem {palavra}+{integer}?
 {and} 		return AND;
 {like}		return LIKE;
 {orderby} 	return ORDERBY;
+{groupby}   	return GROUPBY;
 {as}		return AS;
 {origem}	return ORIGEM;
+{limit} 	return LIMIT;
 "+"		return MAIS;
 "-"		return MENOS;
 "*" 		return ASTERISCO;
