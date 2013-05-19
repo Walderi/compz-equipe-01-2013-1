@@ -1,0 +1,9 @@
+Nao utilizar mais printf e sim return, para mandar o retorno para o BISON.
+
+Utilizar Biding de tipo para o BISON!
+
+BISON usa o padrao do EBNF com ordem de precedencia estabelecida pelo usuario.
+
+
+
+

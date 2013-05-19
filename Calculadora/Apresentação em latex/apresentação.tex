@@ -129,8 +129,7 @@ O parametro "-lfl" passado na compilação do gcc serve pra identificar que foi 
 \begin{frame}
 \frametitle{Bison}
 
-O Bison é um analisador que lê um arquivo que codifica gramática uma linguagem e gera uma rotina
-de "parsing", agrupando os tokens em uma sequência de interesse e invoca ações para esses tokens
+Sobre o bison:
 
 \end{frame}
 %Slide 10 - inicio
@@ -138,7 +137,7 @@ de "parsing", agrupando os tokens em uma sequência de interesse e invoca açõe
 \begin{frame}
 \frametitle{Instalando o Bison no Linux}
 
-FALAR SOBRE A INSTALAÇÂO DO BISON
+Instalacao do Bison
 
 \end{frame}
 
@@ -155,15 +154,14 @@ FALAR SOBRE A INSTALAÇÂO DO BISON
 %slide 12 - Inicio
 \begin{frame}
 \frametitle{Criando um arquivo para o Bison}
-		FALAR SOBRE COMO É ORGANIZADO O BISON E FAZER UM LINK COM ALGUM EXEMPLO "HELLO WORLD" PARA ILUSTRAR
+		Como é organizado o Bison e Bison vs YACC
 	
 \end{frame}
 
 %Slide 13 - Inicio 
 \begin{frame}
 \frametitle{Criando um arquivo para o Bison}
-		FALAR SOBRE COMO É PARA COMPILAR UM ARQUIVO DO BISON E OQUE RESULTA? SE RESULTA EM ALGUMA COISA? E SE DAR 
-		DE COMPILAR.. ESSAS COISAS!
+	MAis informacoes sobre entrada e saida do Bison	
 	
 \end{frame}
 %Slide 14 - Inicio
@@ -179,7 +177,7 @@ FALAR COMO FUNCIONARÁ A CALCULADORA
 \begin{frame}
 \frametitle{Arquivo Flex da Calculadora}
 FALAR COMO ESTÁ ORGANIZADO O ARQUIVO FLEX DA CALCULADORA E APONTAR UM LINK AO ESTILO DO SLIDE 07 PARA O NOSSO GIT, PARA MOSTRAR
-O ARQUIVO FLEX LÁ... PRA MOSTRAR QUE ESTAMOS FAZENDO SERVIÇO
+O ARQUIVO FLEX
 
 
 \end{frame}
@@ -190,7 +188,7 @@ O ARQUIVO FLEX LÁ... PRA MOSTRAR QUE ESTAMOS FAZENDO SERVIÇO
 \begin{frame}
 \frametitle{Arquivo Bison da Calculadora}
 FALAR COMO ESTÁ ORGANIZADO O ARQUIVO BISON DA CALCULADORA E APONTAR UM LINK AO ESTILO DO SLIDE 07 PARA O NOSSO GIT, PARA MOSTRAR
-O ARQUIVO FLEX LÁ... PRA MOSTRAR QUE ESTAMOS FAZENDO SERVIÇO
+O ARQUIVO FLEX LÁ...
 
 \end{frame}
 
@@ -208,10 +206,30 @@ FALAR Oq é ARVORE SINTÁTICA E COMO ELA FUNCIONA
 \frametitle{Árvore Sintática da Calculadora }
 
 EXEMPLIFICAR A ARVORE COM OS EXEMPLOS 
-\\ 1 
+\\ 1
 \\ 1+3
 \\ 1+3*4
 \\ 1+3*4-2
+
+\end{frame}
+
+%SLide extra - Inicio
+\begin {frame}
+\frametitle{Árvore Sintática da Calculadora }
+
+INPUT ->
+  LINE ->
+    EXPRESSION ->
+      NUMBER ->
+	1
+
+INPUT ->
+	LINE ->
+		EXPRESSION ->
+			      EXPRESSION + EXPRESSION ->
+							  NUMBER + EXPRESSION ->
+										  NUMBER + NUMBER ->
+												      1 + 3
 
 \end{frame}
 
