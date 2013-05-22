@@ -1,0 +1,19 @@
+git clone http://github.com/user/repo.git directory
+
+git remote -v //check origin address
+
+*do changes*
+
+git pull origin master //verificas mudancas realizadas por outros usuarios
+
+//analisa as mudancas
+
+git commit -m "[tag] message"
+
+//se tiver criacao ou remocao de diretorios com arquivos
+
+git commit -a -m "[tag] message"
+
+//envia dados
+
+git push origin master
