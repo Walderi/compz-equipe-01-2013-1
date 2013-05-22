@@ -128,8 +128,8 @@ O parametro "-lfl" passado na compilação do gcc serve pra identificar que foi 
 \section{Bison}
 \begin{frame}
 \frametitle{Bison}
-
-Sobre o bison:
+Bison é um gerador de interpretadores para fins gerais que converte uma gramática livre de contexto anotado em uma 
+linguagem regular aplicando um parser tabelas do analisador lexico.
 
 \end{frame}
 %Slide 10 - inicio
@@ -137,7 +137,10 @@ Sobre o bison:
 \begin{frame}
 \frametitle{Instalando o Bison no Linux}
 
-Instalacao do Bison
+Antes de fazer qualquer coisa para criação do arquivo Bison é necessário inicialmente a instalação do 
+compilador Bison no sistema operacional, no caso utilizado foi o Linux Ubuntu 13.04.
+	Para instalação é necessário abrir o terminal e por linha de comando digitar: 
+			\\ \$ sudo apt-get install bison
 
 \end{frame}
 
@@ -146,7 +149,14 @@ Instalacao do Bison
 
 \begin{frame}
 \frametitle{Criando um arquivo para o Bison}
-	
+	\begin{itemize} 				% Assim inicializa os itens 
+	    \item<1->   Compilação em Bison primeiro do seguinte modo, pela linha de comando do linux:	% esse ``1'' dentro de < .. > 
+	    \item<2-> bison -d nome-do-programa.y
+	    \item<3-> Em seguida é necessária a compilação do arquivo lexico no caso o flex com o seguinte comando\:
+	    \item<4-> flex -o nome-do-programa.lex.c nome-do-programa.lex
+	    \item<5-> e em seguida a compilação do GCC com o seguinte comando 
+	    \item<6-> gcc -o nome-do-programa nome-do-programa.lex.c nome-do-programa.tab.c -lfl -lm
+    \end{itemize}
 	Todos os arquivos de bison são terminados em .y
 
 \end{frame}
