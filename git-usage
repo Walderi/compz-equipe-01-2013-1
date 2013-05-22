@@ -17,3 +17,6 @@ git commit -a -m "[tag] message"
 //envia dados
 
 git push origin master
+
+
+//inserir informacoes de branching e reset
