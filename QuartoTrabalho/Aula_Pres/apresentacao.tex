@@ -129,7 +129,7 @@ O parametro "-lfl" passado na compilação do gcc serve pra identificar que foi 
 \begin{frame}
 \frametitle{Bison}
 Bison é um gerador de interpretadores para fins gerais que converte uma gramática livre de contexto anotado em uma 
-linguagem regular aplicando um parser tabelas do analisador lexico.
+linguagem regular aplicando um parser nas tabelas do analisador lexico.
 
 \end{frame}
 %Slide 10 - inicio
@@ -209,6 +209,8 @@ O ARQUIVO FLEX
 	No bison foi feito primeiro uma definicao dos tokens da linguagem 
 	Depois a precedencia das operacoes indicando quais sao os nos que ficaram na raiz da arvore
 	e tambem qual o metodo de derivacao da arvore
+	Logo em seguida e definida a BNF da calculadora
+	
 FALAR COMO ESTÁ ORGANIZADO O ARQUIVO BISON DA CALCULADORA E APONTAR UM LINK AO ESTILO DO SLIDE 07 PARA O NOSSO GIT, PARA MOSTRAR
 O ARQUIVO FLEX LÁ...
 
@@ -218,7 +220,9 @@ O ARQUIVO FLEX LÁ...
 \subsection{Árvore Sintática da Calculadora }
 \begin{frame}
 \frametitle{Árvore Sintática da Calculadora }
-
+	Arvore sintatica e uma abstracao de como e feita a verificacao da derivacao das expressoes de acordo com a BNF
+	A arvore sintatica cria todoas as possiveis combinacoes de expressoes que sao validas na linguagem
+	
 FALAR Oq é ARVORE SINTÁTICA E COMO ELA FUNCIONA
 
 \end{frame}
