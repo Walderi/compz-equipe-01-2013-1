@@ -129,7 +129,7 @@ O parametro "-lfl" passado na compilação do gcc serve pra identificar que foi 
 \begin{frame}
 \frametitle{Bison}
 Bison é um gerador de interpretadores para fins gerais que converte uma gramática livre de contexto anotado em uma 
-linguagem regular aplicando um parser nas tabelas do analisador lexico.
+linguagem regular aplicando um parser tabelas do analisador lexico.
 
 \end{frame}
 %Slide 10 - inicio
@@ -149,7 +149,6 @@ compilador Bison no sistema operacional, no caso utilizado foi o Linux Ubuntu 13
 
 \begin{frame}
 \frametitle{Criando um arquivo para o Bison}
-	para a criação do arquivo bison e necessario 3 etapas na qual envolve a compilação do arquivo lexico
 	\begin{itemize} 				% Assim inicializa os itens 
 	    \item<1->   Compilação em Bison primeiro do seguinte modo, pela linha de comando do linux:	% esse ``1'' dentro de < .. > 
 	    \item<2-> bison -d nome-do-programa.y
@@ -159,6 +158,7 @@ compilador Bison no sistema operacional, no caso utilizado foi o Linux Ubuntu 13
 	    \item<6-> gcc -o nome-do-programa nome-do-programa.lex.c nome-do-programa.tab.c -lfl -lm
     \end{itemize}
 	
+
 \end{frame}
 
 %slide 12 - Inicio
@@ -172,20 +172,18 @@ compilador Bison no sistema operacional, no caso utilizado foi o Linux Ubuntu 13
 \begin{frame}
 \frametitle{Criando um arquivo para o Bison}
 	Todos os arquivos de bison são terminados em .y
-	Por padrão ele gera a extensão .tab.c para a compilação do gcc
-	o bison é um analisador sintatico ele da significado a uma cadeia de simbolos válidos 
-	
-MAis informacoes sobre entrada e saida do Bison	
+	\item<1-> Depois de definida a BNF o arquivo tem de ser complilado para gerar uma tabela de execucao
+	\item<2-> o arquivo gerado tem a extensao .tab.c para entao ser compilado no gcc
 	
 \end{frame}
 %Slide 14 - Inicio
 \section{Calculadora}
 \begin{frame}
 \frametitle{Calculadora}
-	Para esta apresentação foi feito a definição de uma calculadora para o bison
-	Essa calculadora terá as operações básicas de adição, subtração, multiplicação e divisão
-	E tabem operaçoes como exponenciação e devido o conhecimento do usuario pode se fazer radiciação tambem
-
+	Como exemplo foi feito uma calculadora
+	A calculadora e simples fazendo somente as operacoes basicas de soma, subtracao, multiplicacao e divisao
+	Ela tambem pode fazer operacoes de potenciacao
+FALAR COMO FUNCIONARÁ A CALCULADORA
 \end{frame}
 
 %Slide 15 - Inicio
@@ -193,9 +191,10 @@ MAis informacoes sobre entrada e saida do Bison
 
 \begin{frame}
 \frametitle{Arquivo Flex da Calculadora}
-	No arquivo flex e feita a divisão entre cabeçalhos, tokens da linguagem e retorno para os valores dos tokens
-	Uma quarta divisão é feita para o metodo main.
-
+	No arquivo flex da calculadora foi dividido em:
+	\item<1-> * caracteres da linguagems
+	\item<2-> * significado dos lexemas 
+	
 FALAR COMO ESTÁ ORGANIZADO O ARQUIVO FLEX DA CALCULADORA E APONTAR UM LINK AO ESTILO DO SLIDE 07 PARA O NOSSO GIT, PARA MOSTRAR
 O ARQUIVO FLEX
 
@@ -204,9 +203,12 @@ O ARQUIVO FLEX
 
 %Slide 16 - Inicio
 \subsection{Arquivo Bison da Calculadora}
-
+	
 \begin{frame}
 \frametitle{Arquivo Bison da Calculadora}
+	No bison foi feito primeiro uma definicao dos tokens da linguagem 
+	Depois a precedencia das operacoes indicando quais sao os nos que ficaram na raiz da arvore
+	e tambem qual o metodo de derivacao da arvore
 FALAR COMO ESTÁ ORGANIZADO O ARQUIVO BISON DA CALCULADORA E APONTAR UM LINK AO ESTILO DO SLIDE 07 PARA O NOSSO GIT, PARA MOSTRAR
 O ARQUIVO FLEX LÁ...
 
