@@ -195,7 +195,6 @@ MAis informacoes sobre entrada e saida do Bison
 \frametitle{Arquivo Flex da Calculadora}
 	No arquivo flex e feita a divisão entre cabeçalhos, tokens da linguagem e retorno para os valores dos tokens
 	Uma quarta divisão é feita para o metodo main.
-
 FALAR COMO ESTÁ ORGANIZADO O ARQUIVO FLEX DA CALCULADORA E APONTAR UM LINK AO ESTILO DO SLIDE 07 PARA O NOSSO GIT, PARA MOSTRAR
 O ARQUIVO FLEX
 
