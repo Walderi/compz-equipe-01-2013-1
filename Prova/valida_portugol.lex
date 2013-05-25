@@ -3,44 +3,44 @@
 extern int yywrap() { }
 %}
 
-ALGORITMO algoritmo
-FIMALGORITMO fimalgoritmo
-INICIO inicio
-ESCREVAL escreval
+ALGORITMO /algoritmo/i
+FIMALGORITMO /fimalgoritmo/i
+INICIO /inicio/i
+ESCREVAL /escreval/i
 STRING \".*\"
-ESCREVA escreva
-VAR var
-LOGICO logico
-INTEIRO inteiro
-VERDADEIRO verdadeiro
-FALSO falso
-REAL [r]eal
-PI [p][\i]
-LEIA leia
-SE [s][\e]
-ENTAO [\e]ntao
-SENAO [s][\e]nao
-FIMSE fims[\e]
-ESCOLHA escolha
-FIMESCOLHA fimescolha
-CASO caso
-INTERROMPA interrompa 
-OUTROCASO outrocaso
-AND [\e]
-OR  [ou]
+ESCREVA /escreva/i
+VAR /var/i
+LOGICO /logico/i
+INTEIRO /inteiro/i
+VERDADEIRO /verdadeiro/i
+FALSO /falso/i
+REAL /[r]eal/i
+PI /[p][\i]/i
+LEIA /leia/i
+SE /[s][\e]/i
+ENTAO /[\e]ntao/i
+SENAO /[s][\e]nao/i
+FIMSE /fims[\e]/i
+ESCOLHA /escolha/i
+FIMESCOLHA /fimescolha/i
+CASO /caso/i
+INTERROMPA /interrompa/i 
+OUTROCASO /outrocaso/i
+AND /[\e]/i
+OR  /[ou]/i
 COMENTARIO [\//]{2}.*
 DIVISAO [\//]{1}
 DIVISAOINTEIRA [\\]{1}
-MOD mod
+MOD /mod/i
 VARIAVEL [a-zA-Z]+[0-9]*
 ATRIBUI \<\-
 NUMINTEIRO [0-9]+
-REPITA "repita"
-ATE "ate"
-PROCEDIMENTO "procedimento"
+REPITA /repita/i
+ATE /ate/i
+PROCEDIMENTO /procedimento/i
 TAB [\t]*
 ESPACOVAZIO [ ]*
-RAIZQ raizq 
+RAIZQ /raizq/i
 
 %%
 
