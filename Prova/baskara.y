@@ -52,6 +52,7 @@ Line:
 ;
 
 Expression:
+
 	NUMBER { $$=$1; }
 	| Expression PLUS Expression { $$=$1+$3; }  
 	| Expression MINUS Expression { $$=$1-$3; }  
@@ -77,6 +78,9 @@ Escreval:
 Atribuicao:
 	T_VARIAVEL T_ATRIBUICAO Expression
 ;
+
+Leia:
+	T_LEIA  T_ABRE_PARENT T_VARIAVEL T_FECHA_PARENT
 
 %%
 
