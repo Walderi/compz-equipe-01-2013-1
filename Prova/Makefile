@@ -10,5 +10,5 @@ clean:
 	@echo "cleaned!"
 
 test: 	
-	./baskara sql
+	./baskara ./baskara.alg
 	
