@@ -14,7 +14,7 @@
 
 \title[Introdução ao Flex e Bison]{Introdução ao Flex e Bison}
 \author[Lucas, André, George, Luis, Walderi]
-       {Lucas Begnini Costa // André Moreira // George Lucas // Luis Sergio // Walderi}
+       {Lucas Begnini Costa // André Moreira // George Lucas Gomes // Luiz Sergio // Walderi Filho}
 			
 	\institute[UEA]{Universidade do Estado do Amazonas}
 \date{\today}
@@ -57,7 +57,7 @@
      \item<1-> Flex - Analisador léxico    	% esse ``1'' dentro de < .. > 
      \item<2-> Bison - Analisador semântico	 % Simboliza a ordem que será mostrado os itens 
     \end{itemize}				% Finaliza os itens 
-  Mas para apresentar a calculadora será necessário uma breve apresentação a respeito de
+  Para apresentar a calculadora será necessário uma breve apresentação a respeito de
  Flex e Bison
 
 \end{frame}			% Finalizo o slide
@@ -128,9 +128,8 @@ O parametro "-lfl" passado na compilação do gcc serve pra identificar que foi 
 \section{Bison}
 \begin{frame}
 \frametitle{Bison}
-
-O Bison é um analisador que lê um arquivo que codifica gramática uma linguagem e gera uma rotina
-de "parsing", agrupando os tokens em uma sequência de interesse e invoca ações para esses tokens
+Bison é um gerador de interpretadores para fins gerais que converte uma gramática livre de contexto anotado em uma 
+linguagem regular aplicando um parser nas tabelas do analisador lexico.
 
 \end{frame}
 %Slide 10 - inicio
@@ -138,7 +137,10 @@ de "parsing", agrupando os tokens em uma sequência de interesse e invoca açõe
 \begin{frame}
 \frametitle{Instalando o Bison no Linux}
 
-FALAR SOBRE A INSTALAÇÂO DO BISON
+Antes de fazer qualquer coisa para criação do arquivo Bison é necessário inicialmente a instalação do 
+compilador Bison no sistema operacional, no caso utilizado foi o Linux Ubuntu 13.04.
+	Para instalação é necessário abrir o terminal e por linha de comando digitar: 
+			\\ \$ sudo apt-get install bison
 
 \end{frame}
 
@@ -147,30 +149,35 @@ FALAR SOBRE A INSTALAÇÂO DO BISON
 
 \begin{frame}
 \frametitle{Criando um arquivo para o Bison}
+	\begin{itemize} 				% Assim inicializa os itens 
+	    \item<1->   Compilação em Bison primeiro do seguinte modo, pela linha de comando do linux:	% esse ``1'' dentro de < .. > 
+	    \item<2-> bison -d nome-do-programa.y
+	    \item<3-> Em seguida é necessária a compilação do arquivo lexico no caso o flex com o seguinte comando\:
+	    \item<4-> flex -o nome-do-programa.lex.c nome-do-programa.lex
+	    \item<5-> e em seguida a compilação do GCC com o seguinte comando 
+	    \item<6-> gcc -o nome-do-programa nome-do-programa.lex.c nome-do-programa.tab.c -lfl -lm
+    \end{itemize}
 	
-	Todos os arquivos de bison são terminados em .y
 
-\end{frame}
-
-%slide 12 - Inicio
-\begin{frame}
-\frametitle{Criando um arquivo para o Bison}
-		FALAR SOBRE COMO É ORGANIZADO O BISON E FAZER UM LINK COM ALGUM EXEMPLO "HELLO WORLD" PARA ILUSTRAR
-	
 \end{frame}
 
 %Slide 13 - Inicio 
 \begin{frame}
 \frametitle{Criando um arquivo para o Bison}
-		FALAR SOBRE COMO É PARA COMPILAR UM ARQUIVO DO BISON E OQUE RESULTA? SE RESULTA EM ALGUMA COISA? E SE DAR 
-		DE COMPILAR.. ESSAS COISAS!
-	
+	Todos os arquivos de bison são terminados em .y
+	\begin{itemize}
+	\item<1-> Depois de definida a BNF o arquivo tem de ser complilado para gerar uma tabela de execucao
+	\item<2-> o arquivo gerado tem a extensao .tab.c para entao ser compilado no gcc
+	\end{itemize}  
 \end{frame}
 %Slide 14 - Inicio
 \section{Calculadora}
+
 \begin{frame}
 \frametitle{Calculadora}
-FALAR COMO FUNCIONARÁ A CALCULADORA
+	Como exemplo foi feito uma calculadora. \\
+	A calculadora e simples fazendo somente as operacoes basicas de soma, subtracao, multiplicacao e divisao \\
+	Ela tambem pode fazer operacoes de potenciacao
 \end{frame}
 
 %Slide 15 - Inicio
@@ -178,30 +185,48 @@ FALAR COMO FUNCIONARÁ A CALCULADORA
 
 \begin{frame}
 \frametitle{Arquivo Flex da Calculadora}
-FALAR COMO ESTÁ ORGANIZADO O ARQUIVO FLEX DA CALCULADORA E APONTAR UM LINK AO ESTILO DO SLIDE 07 PARA O NOSSO GIT, PARA MOSTRAR
-O ARQUIVO FLEX LÁ... PRA MOSTRAR QUE ESTAMOS FAZENDO SERVIÇO
-
-
+	No arquivo flex da calculadora foi dividido em:
+	\begin{itemize}
+	\item<1-> * caracteres da linguagem
+	\item<2-> * significado dos lexemas 
+	\end{itemize}
 \end{frame}
 
 %Slide 16 - Inicio
 \subsection{Arquivo Bison da Calculadora}
-
+	
 \begin{frame}
 \frametitle{Arquivo Bison da Calculadora}
-FALAR COMO ESTÁ ORGANIZADO O ARQUIVO BISON DA CALCULADORA E APONTAR UM LINK AO ESTILO DO SLIDE 07 PARA O NOSSO GIT, PARA MOSTRAR
-O ARQUIVO FLEX LÁ... PRA MOSTRAR QUE ESTAMOS FAZENDO SERVIÇO
-
+	No bison foi feito primeiro uma definicao dos tokens da linguagem 
+	
+	Depois a precedencia das operacoes indicando quais sao os nos que ficaram na raiz da arvore
+	E tambem qual o metodo de derivacao da arvore
+	
+	Logo em seguida e definida a BNF da calculadora
 \end{frame}
 
 %Slide 17 - Inicio
 \subsection{Árvore Sintática da Calculadora }
 \begin{frame}
 \frametitle{Árvore Sintática da Calculadora }
-
-FALAR Oq é ARVORE SINTÁTICA E COMO ELA FUNCIONA
-
+	*Arvore sintatica e uma abstracao de como e feita a verificacao da derivacao das expressoes de acordo com a BNF.
+	
+	*A arvore sintatica cria todoas as possiveis combinacoes de expressoes que sao validas na linguagem
+	
 \end{frame}
+
+\begin{frame}
+ \frametitle{Árvore Sintática da Calculadora }
+   Esta é a EBNF da Calculadora.\\
+   \begin{figure} 	%para inserir figura basta fazer o mesmo que frame
+            \centering		% Significa que a figura está centralizada no slide
+            \includegraphics[scale=0.5]{EBNF.png} %A figura pra ser add assim tem q ta no diretorio do tex
+            \end{figure}
+ 
+ 
+ 
+\end{frame}
+
 
 %Slide 18 - Inicio
 \begin{frame}
@@ -209,15 +234,29 @@ FALAR Oq é ARVORE SINTÁTICA E COMO ELA FUNCIONA
 
 EXEMPLIFICAR A ARVORE COM OS EXEMPLOS 
 \\ 1
-\\ LINE 
-\\ 	| 
-\\	NUBER
-
-
-
 \\ 1+3
 \\ 1+3*4
 \\ 1+3*4-2
+
+\end{frame}
+
+%SLide extra - Inicio
+\begin {frame}
+\frametitle{Árvore Sintática da Calculadora }
+
+INPUT ->
+  LINE ->
+    EXPRESSION ->
+      NUMBER ->
+	1
+
+INPUT ->
+	LINE ->
+		EXPRESSION ->
+			      EXPRESSION + EXPRESSION ->
+							  NUMBER + EXPRESSION ->
+										  NUMBER + NUMBER ->
+												      1 + 3
 
 \end{frame}
 

@@ -14,7 +14,7 @@
 
 \title[Introdução ao Flex e Bison]{Introdução ao Flex e Bison}
 \author[Lucas, André, George, Luis, Walderi]
-       {Lucas Begnini Costa // André Moreira // George Lucas // Luis Sergio // Walderi}
+       {Lucas Begnini Costa // André Moreira // George Lucas Gomes // Luiz Sergio // Walderi Filho}
 			
 	\institute[UEA]{Universidade do Estado do Amazonas}
 \date{\today}
@@ -57,7 +57,7 @@
      \item<1-> Flex - Analisador léxico    	% esse ``1'' dentro de < .. > 
      \item<2-> Bison - Analisador semântico	 % Simboliza a ordem que será mostrado os itens 
     \end{itemize}				% Finaliza os itens 
-  Mas para apresentar a calculadora será necessário uma breve apresentação a respeito de
+  Para apresentar a calculadora será necessário uma breve apresentação a respeito de
  Flex e Bison
 
 \end{frame}			% Finalizo o slide
@@ -161,13 +161,6 @@ compilador Bison no sistema operacional, no caso utilizado foi o Linux Ubuntu 13
 
 \end{frame}
 
-%slide 12 - Inicio
-\begin{frame}
-\frametitle{Criando um arquivo para o Bison}
-		Como é organizado o Bison e Bison vs YACC
-	
-\end{frame}
-
 %Slide 13 - Inicio 
 \begin{frame}
 \frametitle{Criando um arquivo para o Bison}
@@ -179,10 +172,11 @@ compilador Bison no sistema operacional, no caso utilizado foi o Linux Ubuntu 13
 \end{frame}
 %Slide 14 - Inicio
 \section{Calculadora}
+
 \begin{frame}
 \frametitle{Calculadora}
-	Como exemplo foi feito uma calculadora
-	A calculadora e simples fazendo somente as operacoes basicas de soma, subtracao, multiplicacao e divisao
+	Como exemplo foi feito uma calculadora. \\
+	A calculadora e simples fazendo somente as operacoes basicas de soma, subtracao, multiplicacao e divisao \\
 	Ela tambem pode fazer operacoes de potenciacao
 \end{frame}
 
@@ -193,7 +187,7 @@ compilador Bison no sistema operacional, no caso utilizado foi o Linux Ubuntu 13
 \frametitle{Arquivo Flex da Calculadora}
 	No arquivo flex da calculadora foi dividido em:
 	\begin{itemize}
-	\item<1-> * caracteres da linguagems
+	\item<1-> * caracteres da linguagem
 	\item<2-> * significado dos lexemas 
 	\end{itemize}
 \end{frame}
@@ -221,11 +215,22 @@ compilador Bison no sistema operacional, no caso utilizado foi o Linux Ubuntu 13
 	
 \end{frame}
 
+\begin{frame}
+ \frametitle{Árvore Sintática da Calculadora }
+   Esta é a EBNF da Calculadora.\\
+   \begin{figure} 	%para inserir figura basta fazer o mesmo que frame
+            \centering		% Significa que a figura está centralizada no slide
+            \includegraphics[scale=0.5]{EBNF.png} %A figura pra ser add assim tem q ta no diretorio do tex
+            \end{figure} 
+\end{frame}
+
+
 %Slide 18 - Inicio
 \begin{frame}
 \frametitle{Árvore Sintática da Calculadora }
 
-EXEMPLIFICAR A ARVORE COM OS EXEMPLOS 
+Exemplos:
+
 \\ 1
 \\ 1+3
 \\ 1+3*4
@@ -236,35 +241,97 @@ EXEMPLIFICAR A ARVORE COM OS EXEMPLOS
 %SLide extra - Inicio
 \begin {frame}
 \frametitle{Árvore Sintática da Calculadora }
+Derivando 1
 
-INPUT ->
-  LINE ->
-    EXPRESSION ->
-      NUMBER ->
-	1
-
-INPUT ->
-	LINE ->
-		EXPRESSION ->
-			      EXPRESSION + EXPRESSION ->
-							  NUMBER + EXPRESSION ->
-										  NUMBER + NUMBER ->
-												      1 + 3
+\begin{figure} 	%para inserir figura basta fazer o mesmo que frame
+            \centering		% Significa que a figura está centralizada no slide
+            \includegraphics[scale=0.12]{1.png} %A figura pra ser add assim tem q ta no diretorio do tex
+            \end{figure} 
 
 \end{frame}
+
+%SLide extra - Inicio
+\begin {frame}
+\frametitle{Árvore Sintática da Calculadora }
+Derivando 1+3
+
+\begin{figure} 	%para inserir figura basta fazer o mesmo que frame
+            \centering		% Significa que a figura está centralizada no slide
+            \includegraphics[scale=0.12]{2.png} %A figura pra ser add assim tem q ta no diretorio do tex
+            \end{figure} 
+
+\end{frame}
+
+%SLide extra - Inicio
+\begin {frame}
+\frametitle{Árvore Sintática da Calculadora }
+Derivando 1+3*4
+
+\begin{figure} 	%para inserir figura basta fazer o mesmo que frame
+            \centering		% Significa que a figura está centralizada no slide
+            \includegraphics[scale=0.12]{3.png} %A figura pra ser add assim tem q ta no diretorio do tex
+            \end{figure} 
+
+\end{frame}
+
+%SLide extra - Inicio
+\begin {frame}
+\frametitle{Árvore Sintática da Calculadora }
+Derivando 1+3*4-2
+
+\begin{figure} 	%para inserir figura basta fazer o mesmo que frame
+            \centering		% Significa que a figura está centralizada no slide
+            \includegraphics[scale=0.1]{4.png} %A figura pra ser add assim tem q ta no diretorio do tex
+            \end{figure} 
+
+\end{frame}
+
 
 %Slide 19 - Inicio
 \begin{frame}
 \frametitle{Árvore Sintática da Calculadora }
 
-EXEMPLIFICAR A ARVORE COM OS EXEMPLOS 
+Expressões com parênteses 
 
 (1+3)*4-2 \\
 (1+3)*(4-2) \\
- (1+3)*4(-2)
-
+(1+3)*4(-2)
 
 \end{frame}
+
+\begin {frame}
+\frametitle{Árvore Sintática da Calculadora }
+Derivando (1+3)*4-2
+
+\begin{figure} 	%para inserir figura basta fazer o mesmo que frame
+            \centering		% Significa que a figura está centralizada no slide
+            \includegraphics[scale=0.1]{5.png} %A figura pra ser add assim tem q ta no diretorio do tex
+            \end{figure} 
+
+\end{frame}
+
+\begin {frame}
+\frametitle{Árvore Sintática da Calculadora }
+Derivando (1+3)*(4-2)
+
+\begin{figure} 	%para inserir figura basta fazer o mesmo que frame
+            \centering		% Significa que a figura está centralizada no slide
+            \includegraphics[scale=0.1]{6.png} %A figura pra ser add assim tem q ta no diretorio do tex
+            \end{figure} 
+
+\end{frame}
+
+\begin {frame}
+\frametitle{Árvore Sintática da Calculadora }
+Derivando (1+3)*4(-2) <- ERRO DE SINTAXE
+
+\begin{figure} 	%para inserir figura basta fazer o mesmo que frame
+            \centering		% Significa que a figura está centralizada no slide
+            \includegraphics[scale=0.1]{7.png} %A figura pra ser add assim tem q ta no diretorio do tex
+            \end{figure} 
+
+\end{frame}
+
 
 
 \end{document}

@@ -6,7 +6,7 @@
 \beamer@sectionintoc {3}{Bison}{14}{0}{3}
 \beamer@subsectionintoc {3}{1}{Instalando Bison no Linux}{15}{0}{3}
 \beamer@subsectionintoc {3}{2}{Criando um arquivo para o Bison}{16}{0}{3}
-\beamer@sectionintoc {4}{Calculadora}{25}{0}{4}
-\beamer@subsectionintoc {4}{1}{Arquivo Flex da Calculadora}{26}{0}{4}
-\beamer@subsectionintoc {4}{2}{Arquivo Bison da Calculadora}{28}{0}{4}
-\beamer@subsectionintoc {4}{3}{\IeC {\'A}rvore Sint\IeC {\'a}tica da Calculadora }{29}{0}{4}
+\beamer@sectionintoc {4}{Calculadora}{24}{0}{4}
+\beamer@subsectionintoc {4}{1}{Arquivo Flex da Calculadora}{25}{0}{4}
+\beamer@subsectionintoc {4}{2}{Arquivo Bison da Calculadora}{27}{0}{4}
+\beamer@subsectionintoc {4}{3}{\IeC {\'A}rvore Sint\IeC {\'a}tica da Calculadora }{28}{0}{4}
