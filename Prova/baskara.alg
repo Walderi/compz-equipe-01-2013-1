@@ -1,9 +1,9 @@
-algoritmo "Fórmula de Bhaskara"
-// Função :
+algoritmo "FÃ³rmula de Bhaskara"
+// FunÃ§Ã£o :
 // Autor :
 // Data : 03/05/2011
-// Seção de Declarações 
-var
+// SeÃ§Ã£o de DeclaraÃ§Ãµes 
+
 x1, x2, delta, a, b, c: real
 inicio
 escreva("Informe a:")
@@ -23,3 +23,6 @@ escreval("x2 = ", x2:2:2)
 
 
 fimalgoritmo
+
+
+hahaha
