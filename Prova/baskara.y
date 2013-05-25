@@ -60,6 +60,8 @@ Expression:
 	| Expression POWER Expression { $$=pow($1,$3); }  
 	| LEFT Expression RIGHT { $$=$2; } 
 ;
+Escreva:
+	T_ABRE_PARENTESES T_STRING T_FECHAPARENTESES 
 
 %%
 
