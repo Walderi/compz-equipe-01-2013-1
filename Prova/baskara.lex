@@ -3,45 +3,46 @@
 extern int yywrap() { }
 %}
 
-ALGORITMO /algoritmo/i
-FIMALGORITMO /fimalgoritmo/i
-INICIO /inicio/i
-ESCREVAL /escreval/i
+ALGORITMO [Aa][Ll][Gg][Oo][Rr][Tt][Ii][Mm][Oo]
+FIMALGORITMO [fF][iI][mM][aA][lL][gG][oO][rR][iI][tT][mM][Oo]
+INICIO [iI][nN][iI][cC][iI][oO]
+ESCREVAL [eE][Ss][cC][rR][eE][vV][aA][lL]
 STRING \".*\"
-ESCREVA /escreva/i
-VAR /var/i
-LOGICO /logico/i
-INTEIRO /inteiro/i
-VERDADEIRO /verdadeiro/i
-FALSO /falso/i
-REAL /[r]eal/i
-PI /[p][\i]/i
-LEIA /leia/i
-SE /[s][\e]/i
-ENTAO /[\e]ntao/i
-SENAO /[s][\e]nao/i
-FIMSE /fims[\e]/i
-ESCOLHA /escolha/i
-FIMESCOLHA /fimescolha/i
-CASO /caso/i
-INTERROMPA /interrompa/i 
-OUTROCASO /outrocaso/i
-AND /[\e]/i
-OR  /[ou]/i
+ESCREVA [eE][sS][cC][rR][eE][vV][aA]
+VAR [Vv][aA][rR]
+RAIZQ [rR][Aa][iI][zZ][qQ]
+LOGICO [lL][oO][gG][iI][cC][oO]
+INTEIRO [iI][nN][tT][eE][iI][rR][oO]
+VERDADEIRO [vV][eE][rR][dD][aA][dD][eE][iI][rR][oO]
+FALSO [fF][aA][lL][sS][oO]
+REAL [rR][eE][aA][lL]
+PI [pP][\i I]
+LEIA [lL][eE][iI][aA]
+SE [sS][\e E]
+ENTAO [\e E][nN][tT][aA][oO]
+SENAO [sS][\e E][nN][aA][oO]
+FIMSE [fF][iI][mM][sS][\e E]
+ESCOLHA [eE][sS][cC][oO][lL][hH][aA]
+FIMESCOLHA [fF][iI][mM][eE][sS][cC][oO][lL][hH][aA]
+CASO [cC][aA][sS][oO]
+INTERROMPA [iI][nN][tT][eE][rR][rR][oO][mM][pP][Aa] 
+OUTROCASO [oO][Uu][tT][rR][oO][Cc][aA][sS][oO]
+AND [\e E]
+OR  [oO][uU]
 COMENTARIO [\//]{2}.*
 DIVISAO [\//]{1}
 DIVISAOINTEIRA [\\]{1}
-MOD /mod/i
+MOD [mM][oO][dD]
 VARIAVEL [a-zA-Z]+[0-9]*
 ATRIBUI \<\-
 NUMINTEIRO [0-9]+
-NUMREAL {NUMINTEIRO}\.{NUMINTEIRO}
-REPITA /repita/i
-ATE /ate/i
-PROCEDIMENTO /procedimento/i
+NUMREAL [{NUMINTEIRO}\.{NUMINTEIRO}]
+REPITA [rR][eE][pP][iI][tT][aA]
+ATE [aA][tT][e]
+PROCEDIMENTO [pP][rR][oO][cC][eE][dD][iI][mM][eE][nN][tT][oO]
 TAB [\t]*
 ESPACOVAZIO [ ]*
-RAIZQ /raizq/i
+
 
 %%
 
@@ -59,6 +60,7 @@ RAIZQ /raizq/i
 {AND} return  T_AND;
 {OR}  return  T_OR;
 {VAR} return  T_VAR;
+{RAIZQ} return T_RAIZQ;
 {INTEIRO} return  T_INTEIRO;
 {REAL} return  T_REAL;
 {PI} return  T_PI;
@@ -72,6 +74,7 @@ RAIZQ /raizq/i
 {CASO} return  T_CASO;
 {OUTROCASO} return  T_OUTROCASO;
 {FIMESCOLHA} return  T_FIMESCOLHA;
+{NUMREAL} return T_NUMREAL;
 {NUMINTEIRO} return  T_NUMINTEIRO;
 {ATRIBUI} return  T_ATRIBUI;
 ":" return  T_DOISPONTOS;
@@ -97,8 +100,8 @@ RAIZQ /raizq/i
 {VARIAVEL} return T_VARIAVEL;
 {TAB} return {};
 {ESPACOVAZIO} return {} ;
-{RAIZQ} return T_RAIZQ;
-{NUMREAL} return T_NUMREAL;
+
+
 
 . printf("%s - T_DESCONHECIDO. Localizado na linha: %d \n", yytext,yylineno);
 %%
