@@ -35,6 +35,7 @@ MOD /mod/i
 VARIAVEL [a-zA-Z]+[0-9]*
 ATRIBUI \<\-
 NUMINTEIRO [0-9]+
+NUMREAL {NUMINTEIRO}\.{NUMINTEIRO}
 REPITA /repita/i
 ATE /ate/i
 PROCEDIMENTO /procedimento/i
@@ -73,7 +74,7 @@ RAIZQ /raizq/i
 {FIMESCOLHA} return  T_FIMESCOLHA;
 {NUMINTEIRO} return  T_NUMINTEIRO;
 {ATRIBUI} return  T_ATRIBUI;
-":" return  T_DECLARAVAR;
+":" return  T_DOISPONTOS;
 "+" return  T_SOMA;
 {DIVISAO} return  T_DIVISAO;
 "-" return  T_SUBTRACAO;
@@ -97,6 +98,7 @@ RAIZQ /raizq/i
 {TAB} return {};
 {ESPACOVAZIO} return {} ;
 {RAIZQ} return T_RAIZQ;
+{NUMREAL} return T_NUMREAL;
 
 . printf("%s - T_DESCONHECIDO. Localizado na linha: %d \n", yytext,yylineno);
 %%
